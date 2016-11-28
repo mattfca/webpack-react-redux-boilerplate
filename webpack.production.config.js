@@ -9,6 +9,7 @@ var StatsPlugin = require('stats-webpack-plugin');
 module.exports = {
     // The entry file. All your app roots fromn here.
     entry: [
+        'whatwg-fetch',
         path.join(__dirname, 'app/index.js')
     ],
     // Where you want the output to go
@@ -49,7 +50,9 @@ module.exports = {
         }),
         // plugin for passing in data to the js, like what NODE_ENV we are in.
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
         })
     ],
 
